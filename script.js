@@ -1,27 +1,38 @@
-// Función para mostrar notificación de éxito
-function showNotification(message) {
-    const notification = document.createElement('div');
-    notification.className = 'notification';
-    notification.textContent = message;
-    document.body.appendChild(notification);
+function crearAnimaciones() {
+    const fondo = document.querySelector('.fondo');
+    
+    // Función para generar corazones y rosas cayendo
+    function crearElemento(clase) {
+        const elemento = document.createElement('div');
+        elemento.classList.add(clase);
+        elemento.style.left = `${Math.random() * 100}vw`;
+        elemento.style.animationDuration = `${Math.random() * 5 + 5}s`;
+        elemento.style.opacity = `${Math.random() * 0.5 + 0.5}`;
+        fondo.appendChild(elemento);
 
-    setTimeout(() => {
-        notification.remove();
-    }, 3000);
+        // Eliminar el elemento después de la animación
+        setTimeout(() => {
+            elemento.remove();
+        }, 10000);
+    }
+
+    setInterval(() => {
+        crearElemento('corazon');
+        crearElemento('rosa');
+    }, 1000);
 }
 
-// Función para validar el formulario
-function validateForm(event) {
-    event.preventDefault(); // Evitar el envío del formulario
+function abrirCarta() {
+    const sobre = document.getElementById('sobre');
+    sobre.classList.toggle('abierto');
+}
 
-    const name = document.getElementById('name').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const message = document.getElementById('message').value.trim();
+// Iniciar las animaciones al cargar la página
+window.onload = crearAnimaciones;
 
-    if (!name || !email || !message) {
-        showNotification('Por favor, completa todos los campos.');
-        return;
-    }
+// Abrir la carta al hacer clic en el botón del corazón
+const botonCorazon = document.getElementById('boton-corazon');
+botonCorazon.addEventListener('click', abrirCarta);
 
     showNotification('¡Gracias por tu mensaje! Te responderemos pronto.');
 
