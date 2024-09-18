@@ -33,17 +33,3 @@ window.onload = crearAnimaciones;
 // Abrir la carta al hacer clic en el botón del corazón
 const botonCorazon = document.getElementById('boton-corazon');
 botonCorazon.addEventListener('click', abrirCarta);
-
-    showNotification('¡Gracias por tu mensaje! Te responderemos pronto.');
-
-    // Opcional: aquí podrías enviar el formulario a un servidor usando fetch o XMLHttpRequest.
-    // Para este ejemplo, solo se muestra un mensaje.
-}
-
-// Añadir event listener al formulario
-document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('contactForm');
-    if (form) {
-        form.addEventListener('submit', validateForm);
-    }
-});
